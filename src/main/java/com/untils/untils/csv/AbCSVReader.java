@@ -29,8 +29,8 @@ public abstract class AbCSVReader<T> {
         try (BufferedFileReader bfr = new BufferedFileReader(fileName, charset);
              CSVParser csvParser = new CSVParser(bfr, CSVFormat.DEFAULT);) {
             List<T> list = new ArrayList<T>();
-            for (Iterator<CSVRecord> iterator = csvParser.iterator(); iterator.hasNext();) {
-                list.add(row2T(iterator.next()));
+            for (CSVRecord aCsvParser : csvParser) {
+                list.add(row2T(aCsvParser));
             }
             return list;
         }

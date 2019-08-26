@@ -1,16 +1,19 @@
-package com.hy.bj.cn.reseller.utils.csv;
+package com.untils.service.csv;
 
-import com.hy.bj.cn.reseller.module.aws.AWSBillDaily;
-import com.hy.bj.cn.reseller.utils.DatePatterns;
+import com.untils.module.CSVDemo;
+import com.untils.untils.csv.AbCSVWriter;
 import org.apache.commons.lang3.time.DateFormatUtils;
+
 /**
  * @author zm
  * @Date 2019/8/23
  */
-public class AWSBillDailyCSVWriter extends AbCSVWriter<AWSBillDaily> {
+public class AWSBillDailyCSVWriter extends AbCSVWriter<CSVDemo> {
 
 
-
+    /**
+     * 设置csv生成文件的表头
+     */
     private final Object[] headers = {
             "Bill Id",
             "AWS Payer Account Id",
@@ -31,24 +34,24 @@ public class AWSBillDailyCSVWriter extends AbCSVWriter<AWSBillDaily> {
 
 
     @Override
-    public Object[] t2Row(AWSBillDaily awsBillDaily) throws Exception {
+    public Object[] t2Row(CSVDemo csvDemo) throws Exception {
         return new Object[] {
-                awsBillDaily.getId(),
-                awsBillDaily.getPayerAccountId(),
-                awsBillDaily.getUsageAccountId(),
-                awsBillDaily.getProductName(),
-                awsBillDaily.getLocation(),
-                awsBillDaily.getUsageType(),
-                awsBillDaily.getLineItemDescription(),
-                awsBillDaily.getOperation(),
-                awsBillDaily.getUsageAmount(),
-                awsBillDaily.getUnit(),
-                awsBillDaily.getPublicOnDemandCost(),
-                awsBillDaily.getCurrencyCode(),
-                awsBillDaily.getUsageStartDate(),
-                awsBillDaily.getUsageEndDate(),
-                DateFormatUtils.format(awsBillDaily.getBillingStartTime(), DatePatterns.YMDHMS),
-                DateFormatUtils.format(awsBillDaily.getBillingEndTime(), DatePatterns.YMDHMS)
+                csvDemo.getId(),
+                csvDemo.getPayerAccountId(),
+                csvDemo.getUsageAccountId(),
+                csvDemo.getProductName(),
+                csvDemo.getLocation(),
+                csvDemo.getUsageType(),
+                csvDemo.getLineItemDescription(),
+                csvDemo.getOperation(),
+                csvDemo.getUsageAmount(),
+                csvDemo.getUnit(),
+                csvDemo.getPublicOnDemandCost(),
+                csvDemo.getCurrencyCode(),
+                csvDemo.getUsageStartDate(),
+                csvDemo.getUsageEndDate(),
+                DateFormatUtils.format(csvDemo.getBillingStartTime(), "yyyy-MM-dd HH:mm:ss"),
+                DateFormatUtils.format(csvDemo.getBillingEndTime(), "yyyy-MM-dd HH:mm:ss")
         };
     }
 
@@ -58,17 +61,14 @@ public class AWSBillDailyCSVWriter extends AbCSVWriter<AWSBillDaily> {
     }
 
     /**
-     *
-     * @param type
-     *            aliyun/aws/huaweicloud
-     * @param userId
-     * @param startdate
-     * @param enddate
+     * 生成csv文件名称
+     * @param fileName
+     * @param time
      * @return
      */
-    public String getBillDailyCSVFilename(String type, String userId, String startdate, String enddate) {
+    public String getBillDailyCSVFilename(String fileName, String time) {
         StringBuilder sb = new StringBuilder();
-        sb.append(type).append("_").append(userId).append(startdate).append("_").append(enddate).append(".csv");
+        sb.append(fileName).append("_").append(time).append("_").append(".csv");
         return sb.toString();
     }
 }
