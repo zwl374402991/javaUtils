@@ -1,0 +1,23 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /utils-service
+
+spring:
+  application:
+    name: utils-service
+  datasource:
+      url: jdbc:mysql://127.0.0.1:3306/zdemo?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true
+      username: root
+      password: root
+      driver-class-name: com.mysql.jdbc.Driver
+
+
+swagger:
+  show: true
+
+
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: com.hy.bj.cn.reseller.module
+  config-location: classpath:mybatis/mybatis-config.xml
