@@ -7,11 +7,20 @@ spring:
   application:
     name: utils-service
   datasource:
-      url: jdbc:mysql://127.0.0.1:3306/zdemo?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true
-      username: root
-      password: ***
-      driver-class-name: com.mysql.cj.jdbc.Driver
-
+    url: jdbc:mysql://127.0.0.1:3306/zdemo?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+    timeout: 3000ms
 
 swagger:
   show: true
@@ -21,3 +30,4 @@ mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml
   type-aliases-package: com.utils.module
   config-location: classpath:mybatis/mybatis-config.xml
+
