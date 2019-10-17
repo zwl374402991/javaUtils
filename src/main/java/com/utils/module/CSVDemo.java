@@ -1,4 +1,4 @@
-package com.untils.module;
+package com.utils.module;
 
 
 import lombok.AllArgsConstructor;

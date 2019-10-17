@@ -1,4 +1,4 @@
-package com.untils.config;
+package com.utils.config;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;

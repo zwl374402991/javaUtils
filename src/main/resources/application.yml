@@ -19,5 +19,5 @@ swagger:
 
 mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml
-  type-aliases-package: com.untils.module
+  type-aliases-package: com.utils.module
   config-location: classpath:mybatis/mybatis-config.xml

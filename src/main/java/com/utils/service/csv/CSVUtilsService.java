@@ -1,8 +1,8 @@
-package com.untils.service.csv;
+package com.utils.service.csv;
 
 import com.alibaba.fastjson.JSONObject;
-import com.untils.module.CSVDemo;
-import com.untils.untils.BufferedFileReader;
+import com.utils.module.CSVDemo;
+import com.utils.utils.BufferedFileReader;
 import org.apache.commons.codec.Charsets;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -28,7 +28,7 @@ public class CSVUtilsService {
      */
     public JSONObject readCSVFile(String filePath){
         log.info(" begin");
-        //filePath = "C:\\archerzhang\\saber\\workspaceAll\\test\\untils\\src\\main\\resources\\csvDemo\\rider-00001.csv";
+        //filePath = "C:\\archerzhang\\saber\\workspaceAll\\test\\utils\\src\\main\\resources\\csvDemo\\rider-00001.csv";
         AWSBillDailyCSVReader awsBillDailyCSVReader = new AWSBillDailyCSVReader();
         try (BufferedFileReader bfr = new BufferedFileReader(filePath, Charsets.UTF_8);
              CSVParser csvParser = new CSVParser(bfr, CSVFormat.DEFAULT.withFirstRecordAsHeader());) {
@@ -55,9 +55,9 @@ public class CSVUtilsService {
     public File writerAWSBill(){
         log.info("downAWSBill begin");
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
-        JSONObject jsonObject = readCSVFile("C:\\archerzhang\\saber\\workspaceAll\\test\\untils\\src\\main\\resources\\csvDemo\\rider-00001.csv");
+        JSONObject jsonObject = readCSVFile("C:\\archerzhang\\saber\\workspaceAll\\test\\utils\\src\\main\\resources\\csvDemo\\rider-00001.csv");
         List list = (List) jsonObject.get("data");
-        String filePath = "C:\\archerzhang\\saber\\workspaceAll\\test\\untils\\src\\main\\resources\\csvDemo\\";
+        String filePath = "C:\\archerzhang\\saber\\workspaceAll\\test\\utils\\src\\main\\resources\\csvDemo\\";
         String time = sf.format(new Date());
         AWSBillDailyCSVWriter awsBillDailyCSVWriter = new AWSBillDailyCSVWriter();
         String fileName = filePath

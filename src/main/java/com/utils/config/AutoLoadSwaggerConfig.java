@@ -1,5 +1,5 @@
 
-package com.untils.config;
+package com.utils.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,7 +59,7 @@ public class AutoLoadSwaggerConfig implements CommandLineRunner {
         if (isShow) {
             List<Parameter> pars = new ArrayList<>();
             return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiOfflineInfo()).select()
-                    .apis(RequestHandlerSelectors.basePackage("com.untils.controller"))
+                    .apis(RequestHandlerSelectors.basePackage("com.utils.controller"))
                     .paths(PathSelectors.any()).build().globalOperationParameters(pars);
         } else {
             return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiOnlineInfo()).select()
